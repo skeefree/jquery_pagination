@@ -117,6 +117,11 @@ load_first_page
 	initialized. If you load your content with AJAX and already show content
 	whey you initialize the pagination, you should set this to false.
 
+before_select_page_callback
+	Similar to callback, but this fires before the pagination links render.
+	A return of false will prevent the page switch from occurring and will
+	stop the event's propagation.
+
 Triggering pagination with custom events
 ----------------------------------------
 There may be use cases where you want to change the pagination from your own

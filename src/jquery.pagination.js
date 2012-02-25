@@ -144,7 +144,8 @@
 			renderer:"defaultRenderer",
 			show_if_single_page:false,
 			load_first_page:true,
-			callback:function(){return false;}
+			callback:function(){return false;},
+            before_select_page_callback:function(){return true;}
 		},opts||{});
 		
 		var containers = this,
@@ -171,6 +172,9 @@
 		 * the callback function.
 		 */
 		function selectPage(new_current_page) {
+            if (!opts.before_select_page_callback(new_current_page, containers)) {
+                return false;
+            }
 			// update the link display of a all containers
 			containers.data('current_page', new_current_page);
 			links = renderer.getLinks(new_current_page, paginationClickHandler);
